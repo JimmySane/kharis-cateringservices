@@ -1,0 +1,124 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom color palette for Kharis Gabi Catering Services */
+@layer base {
+  :root {
+    --background: 34 20% 92%; /* Light Beige background */
+    --foreground: 15 25% 15%; /* Dark text */
+
+    --card: 0 0% 100%;
+    --card-foreground: 15 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 15 25% 15%;
+
+    --primary: 15 65% 47%; /* Burnt Orange */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 34 20% 92%; /* Light Beige */
+    --secondary-foreground: 15 25% 15%;
+
+    --muted: 34 15% 88%;
+    --muted-foreground: 15 15% 40%;
+
+    --accent: 38 85% 49%; /* Golden Yellow */
+    --accent-foreground: 15 25% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 34 15% 85%;
+    --input: 34 15% 85%;
+    --ring: 15 65% 47%;
+
+    --radius: 0.5rem;
+
+    /* Custom colors */
+    --light-beige: 34 30% 87%; /* #E6BB91 */
+    --burnt-orange: 15 65% 47%; /* #C14C2D */
+    --golden-yellow: 38 85% 49%; /* #D9831F */
+    --forest-green: 115 21% 22%; /* #2E442D */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+@layer utilities {
+  .bg-light-beige {
+    background-color: hsl(var(--light-beige));
+  }
+  
+  .bg-burnt-orange {
+    background-color: hsl(var(--burnt-orange));
+  }
+  
+  .bg-golden-yellow {
+    background-color: hsl(var(--golden-yellow));
+  }
+  
+  .bg-forest-green {
+    background-color: hsl(var(--forest-green));
+  }
+  
+  .text-burnt-orange {
+    color: hsl(var(--burnt-orange));
+  }
+  
+  .text-golden-yellow {
+    color: hsl(var(--golden-yellow));
+  }
+  
+  .text-forest-green {
+    color: hsl(var(--forest-green));
+  }
+  
+  .border-burnt-orange {
+    border-color: hsl(var(--burnt-orange));
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+[data-gsap] {
+  opacity: 0;
+  transform: translateY(50px);
+  will-change: opacity, transform;
+}

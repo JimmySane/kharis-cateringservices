@@ -11,8 +11,10 @@ permissions:
   id-token: write # Required for OpenID Connect (OIDC) authentication
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+  build-and-deploy: # This is the job name
+    environment: # <--- ADD THIS BLOCK
+      name: github-pages # <--- REQUIRED ENVIRONMENT NAME
+      url: ${{ steps.deployment.outputs.page_url }} 
 
     steps:
       - name: Checkout repository

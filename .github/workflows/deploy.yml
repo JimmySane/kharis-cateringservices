@@ -1,0 +1,43 @@
+name: Deploy Vite App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # This workflow runs when you push to the 'main' branch
+
+permissions:
+  contents: write # Allows the workflow to write to your repository (e.g., gh-pages branch)
+  pages: write    # Allows the workflow to deploy to GitHub Pages
+  id-token: write # Required for OpenID Connect (OIDC) authentication
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # You can change this to '18', '16', etc., depending on your project's Node.js version
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build # This command generates the 'dist' folder
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist' # The directory containing your built site files
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -18,7 +18,7 @@ export function useScrollAnimation() {
           {
             opacity: 1,
             y: 0,
-            duration: 1,
+            duration: 0.7,
             ease: "power3.out",
             scrollTrigger: {
               trigger: element,
